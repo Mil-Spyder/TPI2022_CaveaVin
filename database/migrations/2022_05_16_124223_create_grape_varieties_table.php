@@ -15,7 +15,7 @@ class CreateGrapeVarietiesTable extends Migration
     {
         Schema::create('grape_varieties', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('label');
+            $table->integer('label');
             $table->timestamps();
         });
     }

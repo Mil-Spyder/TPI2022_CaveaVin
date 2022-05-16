@@ -26,7 +26,10 @@ class CreateBottlesTable extends Migration
             $table->time('peak_date');
             $table->time('danger_date');
             $table->unsignedBigInteger('culture_id');
-            $table->foreign('culture_id')->references('id')->on('cultures');
+            $table->foreign('culture_id')->references('id')->on('cultures')->onDelete('cascade');
+            $table->foreignId('winemaker_id')->constrained();
+            $table->unsignedBigInteger('grape_variety_id');
+            $table->foreign('grape_variety_id')->references('id')->on('grape_varieties')->onDelete('cascade');
             $table->timestamps();
         });
     }
