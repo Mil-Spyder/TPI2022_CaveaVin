@@ -14,8 +14,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('bottles.index');
-Route::resource('bottles','BottleController');
 
-});
+//Route::get('/', [BottleController::class, 'index'])->name('homepage');    
+Route::resource('/','App\Http\Controllers\BottleController');
+
+

@@ -15,16 +15,16 @@ class CreateBottlesTable extends Migration
     {
         Schema::create('bottles', function (Blueprint $table) {
             $table->id();
-            $table->unsignedInteger('unit');
             $table->longText('description');
-            $table->year('vintage');
+            $table->string('vintage');
             $table->string('cuvee_name',55);
             $table->string('appelation',250);
             $table->string('capacity',50);
             $table->string('color',50);
-            $table->time('consumable_date');
-            $table->time('peak_date');
-            $table->time('danger_date');
+            $table->date('consumable_date');
+            $table->date('peak_date');
+            $table->date('danger_date');
+            $table->string('unit');
             $table->unsignedBigInteger('culture_id');
             $table->foreign('culture_id')->references('id')->on('cultures')->onDelete('cascade');
             $table->foreignId('winemaker_id')->constrained();

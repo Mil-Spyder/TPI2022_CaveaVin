@@ -19,7 +19,7 @@ class BottleController extends Controller
     {
         //
         $bottles =Bottle::all();
-        return view('bottles.index', $bottles);
+        return view('bottles.index', compact('bottles'));
     }
 
     /**
@@ -42,8 +42,8 @@ class BottleController extends Controller
     public function store(Request $request)
     {
         //
-        $result =  Bottle::create([
-            'unit'=> 'required',
+        
+        $request =  Bottle::create([
             'description' =>'required',
             'vintage' =>'required',
             'cuve_name' =>'required',
@@ -54,10 +54,12 @@ class BottleController extends Controller
             'peak_date'=>'required',
             'danger_date'=>'required',
             'peak_date'=>'required',
-        ]);
-        if ($result){
+            'unit'=> 'required',
 
-            return Redirect::to("")withSuccess("la bouteille ajouté avec succés !");
+        ]);
+        if ($request){
+
+            return Redirect::to("")->withSuccess("la bouteille ajouté avec succés !");
 
         }else{
             return Redirect::to("")->WithFail("la bouteille n'a pas pu être ajouté");
@@ -104,27 +106,8 @@ class BottleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
-        $result =  Bottle::update([
-            'unit'=> 'required',
-            'description' =>'required',
-            'vintage' =>'required',
-            'cuve_name' =>'required',
-            'appelation' => 'required',
-            'capacity' =>'required',
-            'color'=>'required',
-            'consumable_date'=> 'required',
-            'peak_date'=>'required',
-            'danger_date'=>'required',
-            'peak_date'=>'required',
-        ]);
-        if ($result){
-            return Redirect::to("")withSuccess("la bouteille a été modifiée avec succés !");
 
-        }else{
-            return Redirect::to("")->WithFail("la bouteille n'a pas pu être modifiée");
-        }
-        ;
+    
     }
 
     /**
