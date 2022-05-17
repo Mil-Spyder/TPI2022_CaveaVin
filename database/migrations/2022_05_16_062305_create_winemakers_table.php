@@ -17,7 +17,7 @@ class CreateWinemakersTable extends Migration
             $table->id();
             $table->string('first_name',55);
             $table->string('last_name',55);
-            $table->integer('phone_number');
+            $table->string('phone_number',55);
             $table->string('adress',250);
             $table->string('city',250);
             $table->string('locality',250);
