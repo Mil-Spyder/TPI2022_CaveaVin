@@ -21,7 +21,7 @@ Route::get('',[BottleController::class,'index'])->middleware(['auth'])->name('ho
 Route::get('/create',[BottleController::class,'create'])->middleware(['auth'])->name('create');
 Route::post('/',[BottleController::class,'store'])->middleware(['auth'])->name('store');
 Route::get('/edit/',[BottleController::class,'edit'])->middleware(['auth'])->name('edit');
-Route::get('/show/',[BottleController::class,'show'])->middleware(['auth'])->name('show');
+Route::get('/show/{id}',[BottleController::class,'show'])->middleware(['auth'])->name('show');
 Route::get('/delete/',[BottleController::class,'destroy'])->middleware(['auth'])->name('delete');
 
 /*
