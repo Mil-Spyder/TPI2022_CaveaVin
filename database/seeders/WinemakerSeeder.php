@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use Illuminate\Support\Facades\DB;
 class WinemakerSeeder extends Seeder
 {
     /**
@@ -14,7 +14,7 @@ class WinemakerSeeder extends Seeder
     public function run()
     {
         //
-        'DB'::table('winemakers')->insert([
+        DB::table('winemakers')->insert([
             'first_name'=>'Jean',
             'last_name'=>'Jacque',
             'phone_number'=>'078 999 999',
@@ -27,7 +27,7 @@ class WinemakerSeeder extends Seeder
             'updated_at'=>'2022-05-17',
         ]);
 
-        'DB'::table('winemakers')->insert([
+        DB::table('winemakers')->insert([
             'first_name'=>'mattieu',
             'last_name'=>'paul',
             'phone_number'=>'079 999 999',
@@ -40,7 +40,7 @@ class WinemakerSeeder extends Seeder
             'updated_at'=>'2022-05-17',
         ]);
 
-        'DB'::table('winemakers')->insert([
+        DB::table('winemakers')->insert([
             'first_name'=>'pierre',
             'last_name'=>'duJardi',
             'phone_number'=>'+ 33 079 999 999',

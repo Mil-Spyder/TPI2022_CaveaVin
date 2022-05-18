@@ -35,5 +35,16 @@ class CultureSeeder extends Seeder
             'created_at'=>'2022-05-17',
             'updated_at'=>'2022-05-17',
         ]);
+        DB::table('cultures')->insert([
+            'label'=>'écologique',
+            'created_at'=>'2022-05-17',
+            'updated_at'=>'2022-05-17',
+        ]);
+
+        DB::table('cultures')->insert([
+            'label'=>'nature',
+            'created_at'=>'2022-05-17',
+            'updated_at'=>'2022-05-17',
+        ]);
     }
 }

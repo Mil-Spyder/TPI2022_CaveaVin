@@ -1,7 +1,7 @@
 <?php
 
-use App\Http\Controllers\BottleController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BottleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,8 +14,19 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+/*
+TO-DO WARNING rajouter les {id} au URI nécessaires.
+*/
+Route::get('',[BottleController::class,'index'])->middleware(['auth'])->name('home');
+Route::get('/create',[BottleController::class,'create'])->middleware(['auth'])->name('create');
+Route::post('/',[BottleController::class,'store'])->middleware(['auth'])->name('store');
+Route::get('/edit/',[BottleController::class,'edit'])->middleware(['auth'])->name('edit');
+Route::get('/show/',[BottleController::class,'show'])->middleware(['auth'])->name('show');
+Route::get('/delete/',[BottleController::class,'destroy'])->middleware(['auth'])->name('delete');
 
-//Route::get('/', [BottleController::class, 'index'])->name('homepage');    
-Route::resource('/','App\Http\Controllers\BottleController');
-
-
+/*
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+*/
+require __DIR__.'/auth.php';

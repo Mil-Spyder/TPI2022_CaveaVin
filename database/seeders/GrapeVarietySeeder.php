@@ -41,6 +41,16 @@ class GrapeVarietySeeder extends Seeder
             'created_at'=>'2022-05-17',
             'updated_at'=>'2022-05-17',
         ]);
+        'DB'::table('grape_varieties')->insert([
+            'label'=>' Chardonnay',
+            'created_at'=>'2022-05-17',
+            'updated_at'=>'2022-05-17',
+        ]);
+        'DB'::table('grape_varieties')->insert([
+            'label'=>' Merlot',
+            'created_at'=>'2022-05-17',
+            'updated_at'=>'2022-05-17',
+        ]);
 
 
     }

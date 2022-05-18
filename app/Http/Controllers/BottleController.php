@@ -7,6 +7,7 @@ use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Contracts\Service\Attribute\Required;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class BottleController extends Controller
 {
@@ -123,7 +124,6 @@ class BottleController extends Controller
         $bottle ->delete();
 
         // redirect
-        Session::flash('message', 'la bouteille a bien été supprimée');
-        return Redirect::to('bottles');
+       
     }
 }

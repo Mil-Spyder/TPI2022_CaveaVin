@@ -15,20 +15,22 @@ class CreateBottlesTable extends Migration
     {
         Schema::create('bottles', function (Blueprint $table) {
             $table->id();
-            $table->longText('description');
+            $table->string('appelation', 250);
+            $table->string('cuvee_name', 55);
+            $table->string('region');
             $table->string('vintage');
-            $table->string('cuvee_name',55);
-            $table->string('appelation',250);
-            $table->string('capacity',50);
-            $table->string('color',50);
-            $table->date('consumable_date');
-            $table->date('peak_date');
-            $table->date('danger_date');
+            $table->string('capacity', 50);
+            $table->string('color', 50);
             $table->string('unit');
-            $table->unsignedBigInteger('culture_id');
+            $table->string('consumable_date');
+            $table->string('peak_date');
+            $table->string('danger_date');
+            $table->longText('description');
+            $table->unsignedBigInteger('culture_id')->nullable();
             $table->foreign('culture_id')->references('id')->on('cultures')->onDelete('cascade');
-            $table->foreignId('winemaker_id')->constrained();
-            $table->unsignedBigInteger('grape_variety_id');
+            $table->unsignedBigInteger('winemaker_id')->nullable();
+            $table->foreign('winemaker_id')->references('id')->on('winemakers')->onDelete('cascade');            
+            $table->unsignedBigInteger('grape_variety_id')->nullable();
             $table->foreign('grape_variety_id')->references('id')->on('grape_varieties')->onDelete('cascade');
             $table->timestamps();
         });
