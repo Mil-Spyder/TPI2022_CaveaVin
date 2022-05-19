@@ -19,9 +19,10 @@ TO-DO WARNING rajouter les {id} au URI nécessaires.
 */
 Route::get('',[BottleController::class,'index'])->middleware(['auth'])->name('home');
 Route::get('/create',[BottleController::class,'create'])->middleware(['auth'])->name('create');
-Route::post('/',[BottleController::class,'store'])->middleware(['auth'])->name('store');
-Route::get('/edit/',[BottleController::class,'edit'])->middleware(['auth'])->name('edit');
+Route::post('/',[BottleController::class,'store'])->name('store');
+Route::get('/edit/{id}',[BottleController::class,'edit'])->middleware(['auth'])->name('edit');
 Route::get('/show/{id}',[BottleController::class,'show'])->middleware(['auth'])->name('show');
+Route::get('/update/{id}',[BottleController::class,'update'])->middleware(['auth'])->name('update');
 Route::get('/delete/',[BottleController::class,'destroy'])->middleware(['auth'])->name('delete');
 
 /*

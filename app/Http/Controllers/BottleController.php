@@ -44,28 +44,30 @@ class BottleController extends Controller
     {
         //
         
-        $request =  Bottle::create([
-            'description' =>'required',
-            'vintage' =>'required',
-            'cuve_name' =>'required',
-            'appelation' => 'required',
-            'capacity' =>'required',
-            'color'=>'required',
-            'consumable_date'=> 'required',
-            'peak_date'=>'required',
-            'danger_date'=>'required',
-            'peak_date'=>'required',
-            'unit'=> 'required',
+         $result=Bottle::create([
+            'appelation'=> $request->appelation,
+            'cuvee_name'=> $request->cuvee_name,
+            'region'=> $request->region,
+            'vintage'=> $request->vintage,
+            'unit'=> $request->unit,
+            'capacity'=> $request->capacity,
+            'color'=> $request->color,
+            'consumable_date'=> $request->consumable,
+            'peak_date'=> $request->peak,
+            'danger_date'=> $request->danger,
+            'description'=> $request->description,
+            'winemaker_id' =>$request->winemaker,
+            'culture_id'=> $request->cultures,
+            'grape_variety_id'=> $request->grape_variety,
+            
 
         ]);
-        if ($request){
-
-            return Redirect::to("")->withSuccess("la bouteille ajouté avec succés !");
-
-        }else{
-            return Redirect::to("")->WithFail("la bouteille n'a pas pu être ajouté");
+        
+        if ($result) {
+            return Redirect::to("/")->withSuccess("L'enseignant a été créé avec succès");
+        } else {
+            return Redirect::to("/")->withFail("L'enseignant n'a pas pu être créé");
         }
-        ;
 
         
     }
@@ -107,6 +109,33 @@ class BottleController extends Controller
      */
     public function update(Request $request, $id)
     {
+        $bottle = Bottle::findorFail($id);
+
+        $result=$bottle->update([
+            'id'=> $bottle->id,
+            'appelation'=> $request->appelation,
+            'cuvee_name'=> $request->cuvee_name,
+            'region'=> $request->region,
+            'vintage'=> $request->vintage,
+            'unit'=> $request->unit,
+            'capacity'=> $request->capacity,
+            'color'=> $request->color,
+            'consumable_date'=> $request->consumable,
+            'peak_date'=> $request->peak,
+            'danger_date'=> $request->danger,
+            'description'=> $request->description,
+            'winemaker_id' =>$request->winemaker,
+            'culture_id'=> $request->cultures,
+            'grape_variety_id'=> $request->grape_variety,
+            
+
+        ]);
+        
+        if ($result) {
+            return Redirect::to("/")->withSuccess("L'enseignant a été créé avec succès");
+        } else {
+            return Redirect::to("/")->withFail("L'enseignant n'a pas pu être créé");
+        }
 
     
     }
@@ -121,9 +150,13 @@ class BottleController extends Controller
     {
         //
         $bottle = Bottle::findorFail($id);
-        $bottle ->delete();
+        $result=$bottle ->delete();
 
         // redirect
-       
+        if ($result) {
+            return Redirect::to("/")->withSuccess("L'enseignant a été créé avec succès");
+        } else {
+            return Redirect::to("/")->withFail("L'enseignant n'a pas pu être créé");
+        }
     }
 }
