@@ -42,7 +42,7 @@ class BottleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //TO-DO Validation
         
          $result=Bottle::create([
             'appelation'=> $request->appelation,
@@ -64,9 +64,9 @@ class BottleController extends Controller
         ]);
         
         if ($result) {
-            return Redirect::to("/")->withSuccess("L'enseignant a été créé avec succès");
+            return Redirect::to("/")->withSuccess("la bouteille a été crée avec succés");
         } else {
-            return Redirect::to("/")->withFail("L'enseignant n'a pas pu être créé");
+            return Redirect::to("/")->withFail("la bouteille n'a pas été crée");
         }
 
         
@@ -132,9 +132,9 @@ class BottleController extends Controller
         ]);
         
         if ($result) {
-            return Redirect::to("/")->withSuccess("L'enseignant a été créé avec succès");
+            return Redirect::to("/")->withSuccess("la bouteille a été modifiée avec succès");
         } else {
-            return Redirect::to("/")->withFail("L'enseignant n'a pas pu être créé");
+            return Redirect::to("/")->withFail("la bouteille n'a pas été modifiée");
         }
 
     
@@ -154,9 +154,9 @@ class BottleController extends Controller
 
         // redirect
         if ($result) {
-            return Redirect::to("/")->withSuccess("L'enseignant a été créé avec succès");
+            return Redirect::to("/")->withSuccess("la bouteille a été supprimée");
         } else {
-            return Redirect::to("/")->withFail("L'enseignant n'a pas pu être créé");
+            return Redirect::to("/")->withFail("la bouteille n'a pas été supprimer");
         }
     }
 }

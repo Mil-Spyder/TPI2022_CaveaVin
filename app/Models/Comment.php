@@ -8,4 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Comment extends Model
 {
     use HasFactory;
+
+    protected $fillable=['label'];
+    
+    function User()
+    {
+        return $this->belongsTo(User::class, 'grape_variety_id');
+    }
 }

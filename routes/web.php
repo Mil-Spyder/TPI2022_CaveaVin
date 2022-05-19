@@ -23,7 +23,7 @@ Route::post('/',[BottleController::class,'store'])->name('store');
 Route::get('/edit/{id}',[BottleController::class,'edit'])->middleware(['auth'])->name('edit');
 Route::get('/show/{id}',[BottleController::class,'show'])->middleware(['auth'])->name('show');
 Route::get('/update/{id}',[BottleController::class,'update'])->middleware(['auth'])->name('update');
-Route::get('/delete/',[BottleController::class,'destroy'])->middleware(['auth'])->name('delete');
+Route::get('/delete/{id}',[BottleController::class,'destroy'])->middleware(['auth'])->name('delete');
 
 /*
 Route::get('/dashboard', function () {

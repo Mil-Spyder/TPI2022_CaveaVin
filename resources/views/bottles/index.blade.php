@@ -4,7 +4,7 @@
         <!--Card 1-->
         @foreach ($bottles as $bottle)
             <div
-                class="border-r border-b border-l border-red-400  lg:border-l-0 lg:border-t lg:border-red-400 bg-gray-100 rounded-b lg:rounded-b-none lg:rounded-r mb-2 p-4 flex flex-col justify-between leading-normal">
+                class="border border-red-400  lg:border lg:border lg:border-red-400 bg-gray-100 rounded-b lg:rounded-b lg:rounded-r mb-2 p-4 flex flex-col justify-between leading-normal">
                 <div class="mb-8">
                     <p class="text-sm text-gray-600 flex items-center">
                         <svg class="fill-current text-gray-500 w-3 h-3 mr-2" xmlns="http://www.w3.org/2000/svg"
@@ -12,7 +12,7 @@
                             <path
                                 d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
                         </svg>
-                        {{ $bottle->color }} {{ $bottle->grape_variety }}
+                        {{ $bottle->color }} {{ $bottle->grape_variety_id }}
                         <!--TO DO WARNING récupérer le libellé de cépage -->
                     </p>
                     <div class="flex flex-items-row ">
@@ -54,23 +54,23 @@
                                         </path>
                                     </svg>
                                 </div>
-                                 <p class="font-thin text-gray-500">(commentaire récent) Lorem ipsum
-                                dolor
-                                sit
-                                amet, consectetur adipisicing elit. Libero aliquid provident  delectus recusandae
-                                voluptas
-                                dolore
-                                cupiditate tenetur ut,ea saepe laborum necessitatibus voluptate rerum laudantium,
-                                quam,
-                                dolorum
-                                earum neque aut?. </p>
+                                <p class="font-thin text-gray-500">(commentaire récent) Lorem ipsum
+                                    dolor
+                                    sit
+                                    amet, consectetur adipisicing elit. Libero aliquid provident delectus recusandae
+                                    voluptas
+                                    dolore
+                                    cupiditate tenetur ut,ea saepe laborum necessitatibus voluptate rerum laudantium,
+                                    quam,
+                                    dolorum
+                                    earum neque aut?. </p>
                             </div>
                         </div>
                     </div>
 
                 </div>
                 <div class="flex flex-row items-center">
-                    
+
                     <div class="text-sm pr-4 text-xl ">
                         <p class="text-gray-900 font-semibold leading-none py-2">unité</p>
                         <p class="text-gray-600">{{ $bottle->unit }}</p>
@@ -78,26 +78,38 @@
                     <div class="text-sm pl-12">
                         <ul class="font-semibold text-xl">
                             <li> Date consomable: {{ $bottle->consumable_date }}</li>
-                            <li>Date apogée: {{ $bottle->peak_date }}</li>
-                            <li>Date danger: {{ $bottle->danger_date }}</li>
+                            <li> Date apogée: {{ $bottle->peak_date }}</li>
+                            <li> Date danger: {{ $bottle->danger_date }}</li>
                         </ul>
                     </div>
 
-                   
+
                 </div>
                 <div class="flex flex-row-reverse flex-item-center">
                     <div class="pl-4">
                         <button type="button"
                             class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><a
-                                href="{{ route('show', ['id' => $bottle->id]) }}">plus</a>
+                                href="{{ route('show', ['id' => $bottle->id]) }}"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2h-1.528A6 6 0 004 9.528V4z" />
+                                    <path fill-rule="evenodd" d="M8 10a4 4 0 00-3.446 6.032l-1.261 1.26a1 1 0 101.414 1.415l1.261-1.261A4 4 0 108 10zm-2 4a2 2 0 114 0 2 2 0 01-4 0z" clip-rule="evenodd" />
+                                  </svg></a>
                         </button>
                         <button type="button"
                             class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><a
-                                href="{{ route('edit', ['id' => $bottle->id]) }}">modifier</a>
+                                href="{{ route('edit', ['id' => $bottle->id]) }}"><svg xmlns="http://www.w3.org/2000/svg"
+                                    class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path
+                                        d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
+                                    <path fill-rule="evenodd"
+                                        d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z"
+                                        clip-rule="evenodd" />
+                                </svg></a>
                         </button>
                         <button type="button"
                             class="text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-pink-200 dark:focus:ring-pink-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"><a
-                                href="#">supprimer</a>
+                                href="{{ route('delete', ['id' => $bottle->id]) }}"><svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd" />
+                                  </svg></a>
                         </button>
 
                     </div>
