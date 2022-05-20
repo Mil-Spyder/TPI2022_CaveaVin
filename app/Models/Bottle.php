@@ -10,9 +10,24 @@ use App\Models\Culture;
 
 class Bottle extends Model
 {
-    protected $fillable = ['appelation', 'cuvee_name', 'region', 'vintage', 'capacity', 'color', 'unit', 'consumable_date','peak_date', 'danger_date', 'description', 'culture_id', 'grape_variety_id', 'winemaker_id'];
-    
-    function grapeVariety()
+    protected $fillable = [
+        'appelation',
+        'cuvee_name',
+        'region',
+        'vintage',
+        'capacity',
+        'color',
+        'unit',
+        'consumable_date',
+        'peak_date',
+        'danger_date',
+        'description',
+        'culture_id',
+        'grape_variety_id',
+        'winemaker_id'
+    ];
+
+    function grapeVarieties()
     {
         return $this->hasMany(GrapeVariety::class, 'grape_variety_id');
     }
@@ -47,7 +62,7 @@ class Bottle extends Model
         $this->attributes['danger_date'] = Carbon::createFromFormat('d/m/Y', $value)->format('Y-m-d');
     }
 */
-  
-    
+
+
     use HasFactory;
 }

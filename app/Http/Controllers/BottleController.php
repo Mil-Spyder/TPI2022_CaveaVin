@@ -119,7 +119,7 @@ class BottleController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $bottle = Bottle::findorFail($id);
+        
         $request->validate([
             'appelation' => 'required',
             'cuvee_name'  => 'required',
@@ -131,8 +131,8 @@ class BottleController extends Controller
             'description' => 'required',
 
         ]);
-
-
+        
+        $bottle = Bottle::findorFail($id);
         $result = $bottle->update([
             'id' => $bottle->id,
             'appelation' => $request->appelation,

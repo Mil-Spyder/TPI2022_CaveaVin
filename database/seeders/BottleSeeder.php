@@ -50,7 +50,9 @@ class BottleSeeder extends Seeder
             'consumable_date' => '2024',
             'peak_date' => '2033',
             'danger_date' => '2034',
-            'description' => 'blabblablbabalbalblab',
+            'description' => 'L’appellation qui compte un grand nombre de vignerons engagés dans une démarche environnementale, dont 25% en bio/biodynamie, a toujours été précurseur dans la protection de la nature. (1ère appellation bordelaise à mettre en place une station de traitements des effluents vinicoles en 2002) 
+
+            Les vignerons de Castillon Côtes de Bordeaux ont toujours préservé la biodiversité en respectant l’équilibre naturel entre zones boisées et parcelles de vigne.',
             'culture_id' => '5',
             'winemaker_id' => '2',
             'grape_variety_id' => '7',
@@ -63,7 +65,7 @@ class BottleSeeder extends Seeder
             'cuvee_name' => 'CAVE DES PROMESSES',
             'region' => 'Valais',
             'vintage' => '2019',
-            'unit' => '0',
+            'unit' => '50',
             'capacity' => '75',
             'color' => 'Blanc',
             'consumable_date' => '2025',
@@ -87,7 +89,7 @@ class BottleSeeder extends Seeder
             'cuvee_name' => 'PROMESSES D\'HARMONIE',
             'region' => 'Valais',
             'vintage' => '2019',
-            'unit' => '0',
+            'unit' => '1',
             'capacity' => '75',
             'color' => 'Rouge',
             'consumable_date' => '2025',
