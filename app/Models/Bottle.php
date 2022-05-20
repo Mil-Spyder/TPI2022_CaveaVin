@@ -4,7 +4,9 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\GrapeVariety;
+use App\Models\Winemaker;
+use App\Models\Culture;
 
 class Bottle extends Model
 {
@@ -12,7 +14,7 @@ class Bottle extends Model
     
     function grapeVariety()
     {
-        return $this->belongsTo(GrapeVariety::class, 'grape_variety_id');
+        return $this->hasMany(GrapeVariety::class, 'grape_variety_id');
     }
     public function wineMaker()
     {

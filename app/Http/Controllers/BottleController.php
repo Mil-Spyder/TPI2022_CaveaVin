@@ -19,7 +19,7 @@ class BottleController extends Controller
     public function index()
     {
         //
-        $bottles =Bottle::all();
+        $bottles = Bottle::all();
         return view('bottles.index', compact('bottles'));
     }
 
@@ -43,33 +43,43 @@ class BottleController extends Controller
     public function store(Request $request)
     {
         //TO-DO Validation
-        
-         $result=Bottle::create([
-            'appelation'=> $request->appelation,
-            'cuvee_name'=> $request->cuvee_name,
-            'region'=> $request->region,
-            'vintage'=> $request->vintage,
-            'unit'=> $request->unit,
-            'capacity'=> $request->capacity,
-            'color'=> $request->color,
-            'consumable_date'=> $request->consumable,
-            'peak_date'=> $request->peak,
-            'danger_date'=> $request->danger,
-            'description'=> $request->description,
-            'winemaker_id' =>$request->winemaker,
-            'culture_id'=> $request->cultures,
-            'grape_variety_id'=> $request->grape_variety,
-            
+
+        $request->validate([
+            'appelation' => 'required',
+            'cuvee_name'  => 'required',
+            'region'  => 'required',
+            'vintage' => 'required|integer|min:1940|max:2100',
+            'capacity' => 'required|integer|min:0|max:100',
+            'unit' => 'required|integer|min:0|max:999',
+            'color' => 'required',
+            'description' => 'required',
 
         ]);
-        
+
+        $result = Bottle::create([
+            'appelation' => $request->appelation,
+            'cuvee_name' => $request->cuvee_name,
+            'region' => $request->region,
+            'vintage' => $request->vintage,
+            'unit' => $request->unit,
+            'capacity' => $request->capacity,
+            'color' => $request->color,
+            'consumable_date' => $request->consumable,
+            'peak_date' => $request->peak,
+            'danger_date' => $request->danger,
+            'description' => $request->description,
+            'winemaker_id' => $request->winemaker,
+            'culture_id' => $request->cultures,
+            'grape_variety_id' => $request->grape_variety,
+
+
+        ]);
+
         if ($result) {
             return Redirect::to("/")->withSuccess("la bouteille a été crée avec succés");
         } else {
             return Redirect::to("/")->withFail("la bouteille n'a pas été crée");
         }
-
-        
     }
 
     /**
@@ -110,34 +120,47 @@ class BottleController extends Controller
     public function update(Request $request, $id)
     {
         $bottle = Bottle::findorFail($id);
-
-        $result=$bottle->update([
-            'id'=> $bottle->id,
-            'appelation'=> $request->appelation,
-            'cuvee_name'=> $request->cuvee_name,
-            'region'=> $request->region,
-            'vintage'=> $request->vintage,
-            'unit'=> $request->unit,
-            'capacity'=> $request->capacity,
-            'color'=> $request->color,
-            'consumable_date'=> $request->consumable,
-            'peak_date'=> $request->peak,
-            'danger_date'=> $request->danger,
-            'description'=> $request->description,
-            'winemaker_id' =>$request->winemaker,
-            'culture_id'=> $request->cultures,
-            'grape_variety_id'=> $request->grape_variety,
-            
+        $request->validate([
+            'appelation' => 'required',
+            'cuvee_name'  => 'required',
+            'region'  => 'required',
+            'vintage' => 'required|integer|min:1940|max:2100',
+            'capacity' => 'required|integer|min:0|max:100',
+            'unit' => 'required|integer|min:0|max:575',
+            'color' => 'required',
+            'description' => 'required',
 
         ]);
-        
-        if ($result) {
-            return Redirect::to("/")->withSuccess("la bouteille a été modifiée avec succès");
-        } else {
-            return Redirect::to("/")->withFail("la bouteille n'a pas été modifiée");
-        }
 
-    
+
+        $result = $bottle->update([
+            'id' => $bottle->id,
+            'appelation' => $request->appelation,
+            'cuvee_name' => $request->cuvee_name,
+            'region' => $request->region,
+            'vintage' => $request->vintage,
+            'unit' => $request->unit,
+            'capacity' => $request->capacity,
+            'color' => $request->color,
+            'consumable_date' => $request->consumable,
+            'peak_date' => $request->peak,
+            'danger_date' => $request->danger,
+            'description' => $request->description,
+            'winemaker_id' => $request->winemaker,
+            'culture_id' => $request->cultures,
+            'grape_variety_id' => $request->grape_variety,
+
+
+        ]);
+
+        if ($result) {
+
+            $message=session()->flash('success',"la bouteille a été modifiée avec succès");
+
+            return Redirect::to("/")->with('message');
+        } else {
+            return Redirect::to("/")->with('fail',"la bouteille n'a pas été modifiée");
+        }
     }
 
     /**
@@ -150,7 +173,7 @@ class BottleController extends Controller
     {
         //
         $bottle = Bottle::findorFail($id);
-        $result=$bottle ->delete();
+        $result = $bottle->delete();
 
         // redirect
         if ($result) {

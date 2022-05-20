@@ -2,6 +2,9 @@
 @section('content')
     <div class="p-10">
         <!--Card 1-->
+       
+        
+
         @foreach ($bottles as $bottle)
             <div
                 class="border border-red-400  lg:border lg:border lg:border-red-400 bg-gray-100 rounded-b lg:rounded-b lg:rounded-r mb-2 p-4 flex flex-col justify-between leading-normal">

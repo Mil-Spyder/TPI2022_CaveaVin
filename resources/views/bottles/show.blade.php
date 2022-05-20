@@ -1,17 +1,26 @@
 @extends('layouts.app')
 @section('content')
     <!--card-->
+    @if ($errors->any())
+        <div class="w-auto h-auto bg-gray-200">
+            @foreach ($errors->all() as $error)
+                <li class="text-red-300 ">
+                    {{ $error }}
+                </li>
+            @endforeach
+        </div>
+    @endif
     <div class="w-full flex items-center justify-center pt-4">
         <div class="bg-gray-100 rounded-lg shadow-lg flex-col w-5/6 sm:max-w-2xl px-6 border border-red-300">
-            <div class="px-5 py-3 mb-3 text-3xl font-medium text-gray-800 mt-6">
+            <div class="px-5 py-3 mb-3 text-4xl font-medium text-gray-800 mt-6">
                 <div class="">{{ $bottle->appelation }} <br>{{ $bottle->cuvee_name }}</div>
             </div>
             <hr class="border-1 border-gray-300">
             <div class="flex flex-col ml-4 py-4">
-                <h2 for="presentation" class="text-gray-700 font-medium mb-2 underline">Présentation</h2>
+                <h2 for="presentation" class="text-gray-700 font-medium mb-2 underline text-2xl">Présentation</h2>
                 <div class="flex ">
-                    <ul>
-                        <li>{{ $bottle->grape_variety_id }}</li>
+                    <ul class="font-extralight text-gray-500 text-xl py-2">
+                        <li>{{ $bottle->grape_variety }}</li>
                         <li>{{ $bottle->grape_variety_id }} pourcentage</li>
                         <li>{{ $bottle->color }}</li>
                         <li>{{ $bottle->vintage }}</li>
@@ -19,10 +28,10 @@
                         <li>{{ $bottle->consumable__date }}</li>
                         <li>{{ $bottle->Peak_date }}</li>
                         <li>{{ $bottle->danger_date }}</li>
-                        <li>{{ $bottle->culture_id }}</li>
-                        <li>{{ $bottle->winemaker_id }} nom du domaine</li>
-                        <li>{{ $bottle->winemaker_id }} nom du vigneron</li>
-                        <li>{{ $bottle->winemaker_id }} prénom du vigneron</li>
+                        <li>{{ $bottle->culture->label }}</li>
+                        <li>{{ $bottle->winemaker->domaine_name }} </li>
+                        <li>{{ $bottle->winemaker->last_name }} </li>
+                        <li>{{ $bottle->winemaker->first_name }} </li>
                     </ul>
 
 
@@ -34,9 +43,9 @@
                 <hr class="border-gray-300 border-1 w-full rounded-md">
             </div>
             <div class="flex flex-col ml-4 py-4">
-                <h2 for="presentation" class="text-gray-700 font-medium mb-2 underline">Déscription</h2>
+                <h2 for="presentation" class="text-gray-700 font-medium mb-2 underline text-2xl">Déscriptions</h2>
                 <div class="flex">
-                    <p class="">
+                    <p class="text-gray-500 py-2 text-m">
                         {{ $bottle->description }}
                     </p>
                 </div>
@@ -59,7 +68,7 @@
                 <hr class="border-gray-300 border-1 w-full rounded-md">
             </div>
             <div class="flex flex-col ml-4 py-4">
-                <h2 for="presentation" class="text-gray-700 font-medium mb-2 underline">Votre avis</h2>
+                <h2 for="presentation" class="text-gray-700 font-medium mb-2 underline text-2xl">Votre avis</h2>
                 <div class="flex flex-row">
                     <div class="max-w-lg shadow-md grid grid-cols-2 gap-4 ">
                         @csrf
