@@ -17,9 +17,9 @@
             </div>
             <hr class="border-1 border-gray-300">
             <div class="flex flex-col ml-4 py-4">
-                <h2 for="presentation" class="text-gray-700 font-medium mb-2 underline text-2xl">Présentation</h2>
+                <h2 for="presentation" class=" text-justify text-gray-700 font-medium mb-2 underline text-2xl">Présentation</h2>
                 <div class="flex ">
-                    <ul class="font-extralight text-gray-500 text-xl py-2">
+                    <ul class="font-extralight text-gray-500 text-xl py-2 text-justify">
                         <li>{{ $bottle->grape_variety }}</li>
                         <li>{{ $bottle->grape_variety_id }} pourcentage</li>
                         <li>{{ $bottle->color }}</li>
