@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 use App\Models\GrapeVariety;
 use App\Models\Winemaker;
 use App\Models\Culture;
+use App\Models\Comment;
 
 class Bottle extends Model
 {
@@ -27,7 +28,7 @@ class Bottle extends Model
         'winemaker_id'
     ];
 
-    function grapeVarieties()
+    public function grapeVarieties()
     {
         return $this->hasMany(GrapeVariety::class, 'grape_variety_id');
     }
@@ -38,6 +39,11 @@ class Bottle extends Model
     public function culture()
     {
         return $this->belongsTo(Culture::class, 'culture_id');
+    }
+    public function comments()
+    {
+
+        return $this->hasMany(Comment::class);
     }
 
     /*

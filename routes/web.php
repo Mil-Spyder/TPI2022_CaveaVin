@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BottleController;
+use App\Http\Controllers\CommentController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,13 +18,19 @@ use App\Http\Controllers\BottleController;
 /*
 TO-DO WARNING rajouter les {id} au URI nécessaires.
 */
-Route::get('',[BottleController::class,'index'])->middleware(['auth'])->name('home');
-Route::get('/create',[BottleController::class,'create'])->middleware(['auth'])->name('create');
+Route::middleware(['auth'])->group(function(){
+
+Route::get('',[BottleController::class,'index'])->name('home');
+
+Route::get('/create',[BottleController::class,'create'])->name('create');
 Route::post('/',[BottleController::class,'store'])->name('store');
-Route::get('/edit/{id}',[BottleController::class,'edit'])->middleware(['auth'])->name('edit');
-Route::get('/show/{id}',[BottleController::class,'show'])->middleware(['auth'])->name('show');
-Route::get('/update/{id}',[BottleController::class,'update'])->middleware(['auth'])->name('update');
-Route::get('/delete/{id}',[BottleController::class,'destroy'])->middleware(['auth'])->name('delete');
+Route::get('/edit/{id}',[BottleController::class,'edit'])->name('edit');
+Route::get('/show/{id}',[BottleController::class,'show'])->name('show');
+Route::get('/update/{id}',[BottleController::class,'update'])->name('update');
+Route::get('/delete/{id}',[BottleController::class,'destroy'])->name('delete');
+Route::post('/comment/created',[CommentController::class,'create'])->name('add');
+});
+
 
 /*
 Route::get('/dashboard', function () {

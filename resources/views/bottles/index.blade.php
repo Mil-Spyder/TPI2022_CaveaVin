@@ -57,16 +57,15 @@
                                         </path>
                                     </svg>
                                 </div>
-                                <p class="font-thin text-gray-500">(commentaire récent) Lorem ipsum
-                                    dolor
-                                    sit
-                                    amet, consectetur adipisicing elit. Libero aliquid provident delectus recusandae
-                                    voluptas
-                                    dolore
-                                    cupiditate tenetur ut,ea saepe laborum necessitatibus voluptate rerum laudantium,
-                                    quam,
-                                    dolorum
-                                    earum neque aut?. </p>
+                                @foreach ($comments as $comment)
+                                 @if ($bottle->id==$comment->bottle_id)
+                                 <p class="font-thin text-gray-500">{{$comment->label}} </p>
+                                 
+                                     
+                                 @endif
+                                
+                                @endforeach
+                                
                             </div>
                         </div>
                     </div>

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bottle;
+use App\Models\Comment;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
@@ -19,8 +20,9 @@ class BottleController extends Controller
     public function index()
     {
         //
+        $comments =Comment::all();
         $bottles = Bottle::all();
-        return view('bottles.index', compact('bottles'));
+        return view('bottles.index', compact('bottles','comments'));
     }
 
     /**
@@ -92,7 +94,6 @@ class BottleController extends Controller
     {
         //
         $bottles = Bottle::findOrFail($id);
-
         return view('bottles.show')->with('bottle', $bottles);
     }
 

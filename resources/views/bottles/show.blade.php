@@ -9,6 +9,7 @@
                 </li>
             @endforeach
         </div>
+        
     @endif
     <div class="w-full flex items-center justify-center pt-4">
         <div class="bg-gray-100 rounded-lg shadow-lg flex-col w-5/6 sm:max-w-2xl px-6 border border-red-300">
@@ -67,20 +68,23 @@
 
                 <hr class="border-gray-300 border-1 w-full rounded-md">
             </div>
+
             <div class="flex flex-col ml-4 py-4">
-                <h2 for="presentation" class="text-gray-700 font-medium mb-2 underline text-2xl">Votre avis</h2>
+                <h2 for="avis" class="text-gray-700 font-medium mb-2 underline text-2xl">Votre avis</h2>
                 <div class="flex flex-row">
                     <div class="max-w-lg shadow-md grid grid-cols-2 gap-4 ">
-                        @csrf
-                        <form action="#" class="w-full p-4" method="POST">
+                        
+                        <form action="{{route('add')}}" class="w-full p-4" method="POST">
+                            @csrf
                             <div class="mb-2">
+                                <input type="hidden" name="bottle_id" value="{{$bottle->id}}">
                                 <label for="comment" class="text-lg text-gray-600">Commentaire</label>
                                 <textarea class="w-full h-20 p-2 border rounded focus:outline-none focus:ring-gray-300 focus:ring-1" name="comment"
                                     placeholder="laisser votre commentaire..."></textarea>
                             </div>
                             <button
-                                class="px-3 py-2 text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl rounded"><a
-                                    href="#">Comment</a> </button>
+                                class="px-3 py-2 text-white bg-gradient-to-br from-pink-500 to-orange-400 hover:bg-gradient-to-bl rounded " type="submit">
+                                    Comment </button>
                         </form>
                         <div>
                             <div class=" px-2 py-2 ">

@@ -8,6 +8,11 @@ use App\Models\Bottle;
 
 class GrapeVariety extends Model
 {
+    
+    protected $fillable = [
+        'label', 
+    ];
+
     function bottle()
     {
         return $this->belongsTo(Bottle::class);
