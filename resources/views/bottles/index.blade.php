@@ -15,7 +15,7 @@
                             <path
                                 d="M4 8V6a6 6 0 1 1 12 0v2h1a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2v-8c0-1.1.9-2 2-2h1zm5 6.73V17h2v-2.27a2 2 0 1 0-2 0zM7 6v2h6V6a3 3 0 0 0-6 0z" />
                         </svg>
-                        {{ $bottle->color }} {{ $bottle->grape_variety_id }}
+                        {{ $bottle->color }} {{ $bottle->grape_variety }}
                         <!--TO DO WARNING récupérer le libellé de cépage -->
                     </p>
                     <div class="flex flex-items-row ">
@@ -25,6 +25,9 @@
                                 <p class="font-medium text-gray-500">{{ $bottle->description }}</p>
                             </div>
                             <div class="border-2 border-red-300 px-2 py-2 ">
+                                
+                                @foreach ($bottle->comments as $comment)
+                                
                                 <div class="flex items-center border-b border-red-300">
                                     <svg class="w-5 h-5 text-orange-300" fill="currentColor" viewBox="0 0 20 20"
                                         xmlns="http://www.w3.org/2000/svg">
@@ -57,9 +60,10 @@
                                         </path>
                                     </svg>
                                 </div>
-                                @foreach ($comments as $comment)
+                            
                                  @if ($bottle->id==$comment->bottle_id)
                                  <p class="font-thin text-gray-500">{{$comment->label}} </p>
+                                 <p class="font-thin text-gray-500"> | Posté le {{$comment->created_at}} par {{$comment->user->username}}</p><br>
                                  
                                      
                                  @endif

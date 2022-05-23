@@ -3,11 +3,14 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+
 use Illuminate\Database\Eloquent\Model;
 use App\Models\GrapeVariety;
 use App\Models\Winemaker;
 use App\Models\Culture;
 use App\Models\Comment;
+use App\Models\Rating;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Bottle extends Model
 {
@@ -44,6 +47,12 @@ class Bottle extends Model
     {
 
         return $this->hasMany(Comment::class);
+    }
+
+    public function ratings()
+    {
+
+        return $this->hasMany(Rating::class);
     }
 
     /*

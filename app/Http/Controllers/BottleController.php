@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Models\Bottle;
 use App\Models\Comment;
+use App\Models\GrapeVariety;
+use App\Notifications\DateAlertNotification;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Redirect;
 use Symfony\Contracts\Service\Attribute\Required;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Barryvdh\DomPDF\PDF;
 
 class BottleController extends Controller
 {
@@ -77,6 +80,14 @@ class BottleController extends Controller
 
         ]);
 
+        $dates = [
+            'peak_date' =>$request->peak,
+            'consumable_date' =>$request->consumable,
+            'danger_date' =>$request->danger
+        ];
+
+        
+
         if ($result) {
             return Redirect::to("/")->withSuccess("la bouteille a été crée avec succés");
         } else {
@@ -94,7 +105,8 @@ class BottleController extends Controller
     {
         //
         $bottles = Bottle::findOrFail($id);
-        return view('bottles.show')->with('bottle', $bottles);
+        $grape_varieties = GrapeVariety::all();
+        return view('bottles.show')->with('bottle', $bottles)->with('grape_variety',$grape_varieties);
     }
 
     /**
@@ -182,5 +194,22 @@ class BottleController extends Controller
         } else {
             return Redirect::to("/")->withFail("la bouteille n'a pas été supprimer");
         }
+    }
+
+    public function createPDF() {
+        // retreive all records from db
+        $bottles = Bottle::all();
+        // share data to view
+        view()->share('bottles',$bottles);
+
+        $pdf = PDF::loadView('pdf_view',$this[$bottles] );
+
+        // download PDF file with download method
+        return $pdf->download('détails.pdf');
+      }
+
+    public function Alert()
+    {
+        
     }
 }

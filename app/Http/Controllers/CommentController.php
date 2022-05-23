@@ -11,11 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
-    public function index()
-    {
-        $comments= Comment::all();
-        return redirect::to('bottles.index', compact('comments'));
-    }
+   
 
     public function create(Request $request)
     {
